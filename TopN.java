@@ -12,7 +12,7 @@ import org.apache.hadoop.mapreduce.Mapper;
 import org.apache.hadoop.mapreduce.Reducer; 
 
 public class TopN {
-	private n;
+	private int n;
 
 	public static class TopNMapper extends Mapper<Object, Text, Text, LongWritable> {
 		// Our output key and value Writables
