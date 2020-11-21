@@ -1,2 +1,1 @@
 # Cloud-Computing-Term-Proj
-Currently, run the jupyter notebook using `docker-compose build` from the root folder. Then, when you run `docker-compose up`, jupyter notebook will tell you what URL to visit.
