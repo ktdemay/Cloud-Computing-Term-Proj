@@ -12,8 +12,6 @@ import org.apache.hadoop.mapreduce.Mapper;
 import org.apache.hadoop.mapreduce.Reducer; 
 
 public class TopN {
-	private static int n;
-
 	public static class TopNMapper extends Mapper<Object, Text, Text, LongWritable> {
 		// Our output key and value Writables
 		private TreeMap<Long, String> tmap = new TreeMap<Long, String>();
@@ -23,6 +21,7 @@ public class TopN {
 			String[] tokens = value.toString().split("\t");
 			String word = tokens[0];
 			long count = Long.parseLong(tokens[1]);
+			int n = conf.getInt("n", -1);
 
 			tmap.put(count, word);
 
@@ -52,6 +51,7 @@ public class TopN {
 		public void reduce(Text key, Iterable<LongWritable> values, Context context) throws IOException, InterruptedException {
 			String word = key.toString();
 			long count = 0;
+			int n = conf.getInt("n", -1);
 
 			for (LongWritable val : values) {
 				count = val.get();
@@ -87,6 +87,7 @@ public class TopN {
 		}
 
 		n = Integer.parseInt(otherArgs[2]);
+		conf.setInt("n", n);
 
 		Job job = Job.getInstance(conf, "Top N"); 
   
