@@ -12,7 +12,7 @@ import org.apache.hadoop.mapreduce.Mapper;
 import org.apache.hadoop.mapreduce.Reducer; 
 
 public class TopN {
-	private int n;
+	private static int n;
 
 	public static class TopNMapper extends Mapper<Object, Text, Text, LongWritable> {
 		// Our output key and value Writables
@@ -86,7 +86,7 @@ public class TopN {
 			System.exit(2);
 		}
 
-		n = otherArgs[2];
+		n = Integer.parseInt(otherArgs[2]);
 
 		Job job = Job.getInstance(conf, "Top N"); 
   
