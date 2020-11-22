@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 
 public class term_proj extends JFrame{
     private JPanel panel1;
@@ -7,6 +8,9 @@ public class term_proj extends JFrame{
     private JRadioButton shakeB;
     private JRadioButton hugoB;
     private JRadioButton tolsB;
+    private JTextField searchTF;
+    private JTextField topTF;
+    private JScrollPane resultsBox;
 
     public term_proj() {
         ButtonGroup buttons = new ButtonGroup();
@@ -14,6 +18,8 @@ public class term_proj extends JFrame{
         buttons.add(hugoB);
         buttons.add(tolsB);
         hugoB.setSelected(true);
+
+        resultsBox.setPreferredSize(new Dimension(450, 100));
     }
 
     public static void main(String[] args) {
