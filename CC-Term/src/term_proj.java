@@ -50,7 +50,7 @@ public class term_proj extends JFrame{
                 String cluster = "cluster-382e";
                 List<String> GCPargs = new ArrayList<>();
                 GCPargs.add("gs://dataproc-staging-us-central1-755152546030-wxtwz1dg/TopN/docs/" + author);
-                GCPargs.add("gs://dataproc-staging-us-central1-755152546030-wxtwz1dg/TopN/docs/" + author + "/results");
+                GCPargs.add("gs://dataproc-staging-us-central1-755152546030-wxtwz1dg/TopN/out/" + author);
                 GCPargs.add(n);
 
                 String[] jars = {"gs://dataproc-staging-us-central1-755152546030-wxtwz1dg/TopN/genericDriver.jar"};
