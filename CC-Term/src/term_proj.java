@@ -44,12 +44,14 @@ public class term_proj extends JFrame{
                     author = "Tolstoy";
                 }
 
+                String n = topTF.getText();
+
                 String project = "cloudcomputinghomework3";
                 String cluster = "cluster-382e";
                 List<String> GCPargs = new ArrayList<>();
-                GCPargs.add("gs://dataproc-staging-us-central1-755152546030-wxtwz1dg/MapReduce/wordcountres/wordcountres");
-                GCPargs.add("gs://dataproc-staging-us-central1-755152546030-wxtwz1dg/MapReduce/javatest2");
-                GCPargs.add("5");
+                GCPargs.add("gs://dataproc-staging-us-central1-755152546030-wxtwz1dg/TopN/docs/" + author);
+                GCPargs.add("gs://dataproc-staging-us-central1-755152546030-wxtwz1dg/TopN/docs/" + author + "/results");
+                GCPargs.add(n);
 
                 String[] jars = {"gs://dataproc-staging-us-central1-755152546030-wxtwz1dg/TopN/genericDriver.jar"};
 
