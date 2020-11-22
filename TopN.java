@@ -22,6 +22,7 @@ public class TopN {
 			String word = tokens[0];
 			long count = Long.parseLong(tokens[1]);
 			int n = Integer.parseInt(context.getConfiguration().get("n"));
+			System.out.println("n: " + n);
 
 			tmap.put(count, word);
 
@@ -52,6 +53,7 @@ public class TopN {
 			String word = key.toString();
 			long count = 0;
 			int n = Integer.parseInt(context.getConfiguration().get("n"));
+			System.out.println("n: " + n);
 
 			for (LongWritable val : values) {
 				count = val.get();
