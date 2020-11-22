@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="com.google.cloud:google-cloud-storage:1.58.0" level="project" />
+    <orderEntry type="library" name="com.google.api.grpc:grpc-google-cloud-dataproc-v1:0.18.0" level="project" />
+    <orderEntry type="library" name="com.google.api.grpc:grpc-google-cloud-dataproc-v1:1.1.5" level="project" />
+    <orderEntry type="library" name="com.google.apis:google-api-services-dataproc:v1-rev40-1.22.0" level="project" />
+    <orderEntry type="library" name="com.spotify:dataproc-java-submitter:0.1.2" level="project" />
+  </component>
+</module>
