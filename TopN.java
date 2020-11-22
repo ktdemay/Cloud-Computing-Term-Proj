@@ -21,7 +21,7 @@ public class TopN {
 			String[] tokens = value.toString().split("\t");
 			String word = tokens[0];
 			long count = Long.parseLong(tokens[1]);
-			int n = conf.getInt("n", -1);
+			int n = context.getConfiguration().get("n");
 
 			tmap.put(count, word);
 
@@ -51,7 +51,7 @@ public class TopN {
 		public void reduce(Text key, Iterable<LongWritable> values, Context context) throws IOException, InterruptedException {
 			String word = key.toString();
 			long count = 0;
-			int n = conf.getInt("n", -1);
+			int n = context.getConfiguration().get("n");
 
 			for (LongWritable val : values) {
 				count = val.get();
