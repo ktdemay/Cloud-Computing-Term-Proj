@@ -3,6 +3,7 @@
 ## Running the program
 1. Clone this repository
 2. Create a storage bucket on Google Cloud and upload the authors works to there
+1. Run WordCount on all the author's folders and combine them into one file
 3. Change all paths in term_proj to match your GCP Storage locations
 4. Input these two docker commands:
 5. Select which author you would like to view
