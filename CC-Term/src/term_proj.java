@@ -109,6 +109,40 @@ public class term_proj extends JFrame{
                 }
             }
         });
+
+        ciiB.addActionListener(new ActionListener() {
+            String author = "";
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(hugoB.isSelected()) {
+                    author = "Hugo";
+                }
+                else if(shakeB.isSelected()) {
+                    author = "Shakespeare";
+                }
+                else if(tolsB.isSelected()) {
+                    author = "Tolstoy";
+                }
+
+                String project = "cloudcomputinghomework3";
+                String cluster = "cluster-382e";
+                List<String> GCPargs = new ArrayList<>();
+                GCPargs.add("gs://dataproc-staging-us-central1-755152546030-wxtwz1dg/TopN/docs" + author);
+                GCPargs.add("gs://dataproc-staging-us-central1-755152546030-wxtwz1dg/InvertedIndex/" + author);
+
+                String[] jars = {"gs://dataproc-staging-us-central1-755152546030-wxtwz1dg/TopN/InvertedIndex.jar"};
+
+                DataprocHadoopRunner hadoopRunner = DataprocHadoopRunner.builder(project, cluster).build();
+
+                Job job = Job.builder().setMainClass("InvertedIndex").setArgs(GCPargs).setShippedJars(jars).createJob();
+
+                try {
+                    hadoopRunner.submit(job);
+                } catch (Exception ex) {
+                    System.out.println(ex);
+                }
+            }
+        });
     }
 
     public static void main(String[] args) throws IOException {
