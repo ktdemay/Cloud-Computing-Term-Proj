@@ -15,5 +15,12 @@
 1. Press the "Construct Inverted Indicies" button and wait for the job to complete
 2. Enter your search term in the text field to the left of the search button
 3. Press the "Search for a term" button and see your results below
+### Works Cited
+* https://acadgild.com/blog/building-inverted-index-mapreduce#:~:text=Inverted%20index%20is%20index%20data,given%20word%20or%20a%20term.
+* https://cloud.google.com/dataproc/docs/guides/submit-job#dataproc-submit-job-java
+* https://www.geeksforgeeks.org/how-to-find-top-n-records-using-mapreduce/
+* https://github.com/spotify/dataproc-java-submitter
+* https://stackoverflow.com/questions/25141998/how-to-download-a-file-from-google-cloud-storage-with-java
+
 
 **Not currently working on GCP but implementation of Inverted Index is completed*
