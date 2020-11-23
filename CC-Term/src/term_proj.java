@@ -93,6 +93,7 @@ public class term_proj extends JFrame{
 
                 try {
                     Process proc = Runtime.getRuntime().exec("java -jar test.jar " + author);
+                    proc.waitFor();
 
                     File f = new File("out.txt");
                     Scanner scan = new Scanner(f);
