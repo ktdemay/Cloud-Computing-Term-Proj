@@ -92,16 +92,7 @@ public class term_proj extends JFrame{
                 }
 
                 try {
-                    Storage storage = StorageOptions.newBuilder()
-                            .setProjectId(project)
-                            .setCredentials(GoogleCredentials.fromStream(new FileInputStream("auth.json")))
-                            .build()
-                            .getService();
-                    Blob blob = storage.get("dataproc-staging-us-central1-755152546030-wxtwz1dg", "TopN/out/" + author + "/part-r-00000");
-                    ReadChannel readChannel = blob.reader();
-                    FileOutputStream fileOutputStream = new FileOutputStream("out.txt");
-                    fileOutputStream.getChannel().transferFrom(readChannel, 0, Long.MAX_VALUE);
-                    fileOutputStream.close();
+                    Process proc = Runtime.getRuntime().exec("java -jar test.jar " + author);
 
                     File f = new File("out.txt");
                     Scanner scan = new Scanner(f);
