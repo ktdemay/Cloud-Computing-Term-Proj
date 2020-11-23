@@ -5,10 +5,15 @@ import com.spotify.dataproc.Job;
 import com.spotify.dataproc.submitter.DataprocLambdaRunner;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
-import java.io.Serializable;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
+import com.google.auth.oauth2.GoogleCredentials;
+import com.google.cloud.ReadChannel;
+import com.google.cloud.storage.Blob;
+import com.google.cloud.storage.Storage;
+import com.google.cloud.storage.StorageOptions;
 
 public class term_proj extends JFrame{
     private JPanel panel1;
@@ -19,7 +24,7 @@ public class term_proj extends JFrame{
     private JRadioButton tolsB;
     private JTextField searchTF;
     private JTextField topTF;
-    private JScrollPane resultsBox;
+    private JTextArea resultsBox;
 
     public term_proj() throws IOException {
         ButtonGroup buttons = new ButtonGroup();
@@ -28,6 +33,7 @@ public class term_proj extends JFrame{
         buttons.add(tolsB);
         hugoB.setSelected(true);
 
+        resultsBox.setEditable(false);
         resultsBox.setPreferredSize(new Dimension(450, 100));
 
         topB.addActionListener(new ActionListener() {
@@ -63,6 +69,31 @@ public class term_proj extends JFrame{
                     hadoopRunner.submit(job);
                 } catch (Exception ex) {
                     System.out.println(ex);
+                }
+
+                try {
+                    Storage storage = StorageOptions.newBuilder()
+                            .setProjectId(project)
+                            .setCredentials(GoogleCredentials.fromStream(new FileInputStream("auth.json")))
+                            .build()
+                            .getService();
+                    Blob blob = storage.get("dataproc-staging-us-central1-755152546030-wxtwz1dg", "TopN/out/" + author + "/part-r-00000");
+                    ReadChannel readChannel = blob.reader();
+                    FileOutputStream fileOutputStream = new FileOutputStream("out.txt");
+                    fileOutputStream.getChannel().transferFrom(readChannel, 0, Long.MAX_VALUE);
+                    fileOutputStream.close();
+
+                    File f = new File("out.txt");
+                    Scanner scan = new Scanner(f);
+                    while(scan.hasNextLine()) {
+                        String curr = scan.nextLine();
+                        System.out.println(curr);
+                        String count = curr.substring(0, curr.indexOf("\t"));
+                        String word = curr.substring(curr.indexOf("\t"));
+                        resultsBox.append(word + ": " + count + "\n");
+                    }
+                } catch(Exception fe) {
+                    System.out.printf(fe.toString());
                 }
             }
         });

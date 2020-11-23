@@ -8,5 +8,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="com.spotify:dataproc-java-submitter:0.1.2" level="project" />
+    <orderEntry type="library" name="com.google.cloud:google-cloud-storage:1.58.0" level="project" />
   </component>
 </module>
