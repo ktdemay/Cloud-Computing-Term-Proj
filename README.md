@@ -11,7 +11,7 @@
 1. Enter the number of words you'd like to see
 2. Press the "Top-N" button and wait for the job to complete
 3. Press the "Display TopN" button and see your results displayed
-### For Search
+### For Search (Note: Not currently working on GCP but implementation of Inverted Index is completed)
 1. Press the "Construct Inverted Indicies" button and wait for the job to complete
 2. Enter your search term in the text field to the left of the search button
 3. Press the "Search for a term" button and see your results below
