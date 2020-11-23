@@ -13,7 +13,7 @@ import org.apache.hadoop.mapreduce.lib.input.FileSplit;
 import org.apache.hadoop.io.LongWritable;
 import java.util.*;
 import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
-import org.apache.hadoop.*;
+import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 
 public class InvertedIndex {
 	public class InvertedMap extends Mapper<LongWritable,Text,Text,Text> {
