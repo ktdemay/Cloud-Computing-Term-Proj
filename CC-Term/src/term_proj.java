@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+
+import com.google.common.collect.ImmutableSet;
 import com.spotify.dataproc.DataprocHadoopRunner;
 import com.spotify.dataproc.Job;
 import com.spotify.dataproc.submitter.DataprocLambdaRunner;
@@ -25,8 +27,12 @@ public class term_proj extends JFrame{
     private JTextField searchTF;
     private JTextField topTF;
     private JTextArea resultsBox;
+    private JButton dispTN;
+    private JButton dispS;
 
     public term_proj() throws IOException {
+        final ImmutableSet<String> TERMINAL_JOB_STATES = ImmutableSet.of("CANCELLED", "DONE", "ERROR");
+
         ButtonGroup buttons = new ButtonGroup();
         buttons.add(shakeB);
         buttons.add(hugoB);
@@ -69,6 +75,23 @@ public class term_proj extends JFrame{
                     hadoopRunner.submit(job);
                 } catch (Exception ex) {
                     System.out.println(ex);
+                }
+            }
+        });
+
+        dispTN.addActionListener(new ActionListener() {
+            String author = "";
+            String project = "cloudcomputinghomework3";
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(hugoB.isSelected()) {
+                    author = "Hugo";
+                }
+                else if(shakeB.isSelected()) {
+                    author = "Shakespeare";
+                }
+                else if(tolsB.isSelected()) {
+                    author = "Tolstoy";
                 }
 
                 try {
