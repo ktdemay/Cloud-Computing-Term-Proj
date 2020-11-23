@@ -1,7 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
 
-import com.google.common.collect.ImmutableSet;
 import com.spotify.dataproc.DataprocHadoopRunner;
 import com.spotify.dataproc.Job;
 import com.spotify.dataproc.submitter.DataprocLambdaRunner;
@@ -31,8 +30,6 @@ public class term_proj extends JFrame{
     private JButton dispS;
 
     public term_proj() throws IOException {
-        final ImmutableSet<String> TERMINAL_JOB_STATES = ImmutableSet.of("CANCELLED", "DONE", "ERROR");
-
         ButtonGroup buttons = new ButtonGroup();
         buttons.add(shakeB);
         buttons.add(hugoB);
