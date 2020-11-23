@@ -1,7 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
 
-import com.google.cloud.storage.BlobId;
 import com.spotify.dataproc.DataprocHadoopRunner;
 import com.spotify.dataproc.Job;
 import com.spotify.dataproc.submitter.DataprocLambdaRunner;
@@ -28,7 +27,7 @@ public class term_proj extends JFrame{
     private JTextField topTF;
     private JTextArea resultsBox;
     private JButton dispTN;
-    private JButton dispS;
+    private JButton ciiB;
 
     public term_proj() throws IOException {
         ButtonGroup buttons = new ButtonGroup();
@@ -98,7 +97,7 @@ public class term_proj extends JFrame{
                             .setCredentials(GoogleCredentials.fromStream(new FileInputStream("auth.json")))
                             .build()
                             .getService();
-                    Blob blob = storage.get(BlobId.of("dataproc-staging-us-central1-755152546030-wxtwz1dg", "TopN/out/" + author + "/part-r-00000"));
+                    Blob blob = storage.get("dataproc-staging-us-central1-755152546030-wxtwz1dg", "TopN/out/" + author + "/part-r-00000");
                     ReadChannel readChannel = blob.reader();
                     FileOutputStream fileOutputStream = new FileOutputStream("out.txt");
                     fileOutputStream.getChannel().transferFrom(readChannel, 0, Long.MAX_VALUE);
